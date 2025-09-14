@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
+import pickle
 
 app = Flask(__name__)
 
-# Load the trained model
-model = pickle.load(open("decision_tree_model.pkl", "rb"))
+model_path = os.path.join("model", "decision_tree.pkl")
+
+with open(model_path, "rb") as f:
+    model = pickle.load(f)
 
 @app.route("/")
 def home():
