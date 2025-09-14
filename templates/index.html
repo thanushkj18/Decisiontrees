@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Result Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; }
+        input, select { width: 100%; padding: 8px; margin: 8px 0; }
+        button { background: #28a745; color: white; padding: 10px; border: none; cursor: pointer; width: 100%; }
+        button:hover { background: #218838; }
+        h2 { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Result Prediction</h2>
+        <form action="/predict" method="post">
+            <label>Gender:</label>
+            <select name="gender">
+                <option value="0">Male</option>
+                <option value="1">Female</option>
+            </select>
+
+            <label>Part Time Job:</label>
+            <select name="part_time_job">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>Absence Days:</label>
+            <input type="number" name="absence_days" required>
+
+            <label>Extracurricular Activities:</label>
+            <select name="extracurricular_activities">
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+
+            <label>Weekly Self Study Hours:</label>
+            <input type="number" name="weekly_self_study_hours" required>
+
+            <label>Career Aspiration (Encoded):</label>
+            <input type="number" name="career_aspiration" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result_text %}
+            <h3 style="text-align:center; color:blue;">{{ result_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
